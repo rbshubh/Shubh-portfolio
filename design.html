@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Bhiwapurkar Portfolio</title>
+
+<style>
+
+html{scroll-behavior:smooth;}
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:#0f0f0f;
+color:white;
+}
+
+/* NAVBAR */
+header{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{color:#00ffff;font-weight:bold;}
+
+nav a{
+color:#ccc;
+text-decoration:none;
+margin:0 15px;
+}
+
+nav a:hover{color:#00ffff;}
+
+section{
+padding:100px 20px;
+text-align:center;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.btn{
+padding:10px 25px;
+background:#00ffff;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* ABOUT */
+.about{background:#111;}
+.about p{max-width:700px;margin:auto;color:#bbb;line-height:1.8;}
+
+/* SKILLS */
+.skills{background:#0f0f0f;}
+.skill-box{max-width:500px;margin:20px auto;text-align:left;}
+.progress{background:#222;border-radius:20px;overflow:hidden;}
+.progress-bar{height:10px;background:#00ffff;}
+
+/* PROJECTS */
+.projects{background:#111;}
+.project-card{
+display:inline-block;
+width:250px;
+margin:20px;
+padding:25px;
+background:#1a1a1a;
+border-radius:15px;
+transition:0.3s;
+}
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #00ffff;
+}
+.project-card button{
+margin-top:15px;
+padding:8px 20px;
+border:none;
+background:#00ffff;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* CONTACT */
+.contact{background:#0f0f0f;}
+.contact p{color:#bbb;}
+
+/* FOOTER */
+footer{
+background:black;
+padding:15px;
+text-align:center;
+color:#777;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:#1a1a1a;
+padding:30px;
+border-radius:15px;
+width:300px;
+text-align:center;
+}
+
+input{
+width:90%;
+padding:8px;
+margin:5px;
+border:none;
+border-radius:5px;
+}
+
+.close{
+cursor:pointer;
+color:red;
+margin-top:10px;
+display:block;
+}
+
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:12px 18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Shubham Bhiwapurkar</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+<h1>Hi I'm Shubh</h1>
+<p>Growth Focused Professional & Web Development Learner</p>
+<button class="btn" onclick="location.href='#projects'">View Projects</button>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<h2>About Me</h2>
+<p>
+I am currently working in Partner Growth Marketing with experience in operations,
+customer handling and technical data management.
+Alongside my job, I am learning Web Development to transition into
+a technology-driven career. I believe in discipline and continuous growth.
+</p>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+<h2>My Skills</h2>
+
+<div class="skill-box">
+HTML
+<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+</div>
+
+<div class="skill-box">
+CSS
+<div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+</div>
+
+<div class="skill-box">
+Excel & Data
+<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+<h2>My Projects</h2>
+
+<div class="project-card">
+<h3>🧮 EMI Calculator</h3>
+<button onclick="openEMI()">Open</button>
+</div>
+
+<div class="project-card">
+<h3>💰 Expense Tracker</h3>
+<button onclick="openExpense()">Explore</button>
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<h2>Contact Me</h2>
+<p>📞 9793317379</p>
+<p>📧 rbshubh41@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Shubham Bhiwapurkar
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919793317379" target="_blank">WhatsApp</a>
+
+<!-- EMI MODAL -->
+<div class="modal" id="emiModal">
+<div class="modal-content">
+<h3>EMI Calculator</h3>
+<input type="number" id="loan" placeholder="Loan Amount">
+<input type="number" id="rate" placeholder="Interest Rate (%)">
+<input type="number" id="months" placeholder="Months">
+<button onclick="calculateEMI()">Calculate</button>
+<p id="emiResult"></p>
+<span class="close" onclick="closeModal()">Close</span>
+</div>
+</div>
+
+<!-- EXPENSE MODAL -->
+<div class="modal" id="expenseModal">
+<div class="modal-content">
+<h3>Expense Tracker</h3>
+<input type="text" id="expenseName" placeholder="Expense Name">
+<input type="number" id="expenseAmount" placeholder="Amount">
+<button onclick="addExpense()">Add</button>
+<div id="expenseList"></div>
+<p id="totalExpense"></p>
+<span class="close" onclick="closeModal()">Close</span>
+</div>
+</div>
+
+<script>
+
+function openEMI(){
+document.getElementById("emiModal").style.display="flex";
+}
+
+function openExpense(){
+document.getElementById("expenseModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("emiModal").style.display="none";
+document.getElementById("expenseModal").style.display="none";
+}
+
+/* EMI */
+function calculateEMI(){
+let P=document.getElementById("loan").value;
+let R=document.getElementById("rate").value/12/100;
+let N=document.getElementById("months").value;
+
+let emi=(P*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);
+document.getElementById("emiResult").innerText="Monthly EMI: ₹"+emi.toFixed(2);
+}
+
+/* EXPENSE */
+let total=0;
+function addExpense(){
+let name=document.getElementById("expenseName").value;
+let amount=parseFloat(document.getElementById("expenseAmount").value);
+if(name && amount){
+total+=amount;
+document.getElementById("expenseList").innerHTML+=name+" - ₹"+amount+"<br>";
+document.getElementById("totalExpense").innerText="Total: ₹"+total;
+}
+}
+
+</script>
+
+</body>
+</html>
