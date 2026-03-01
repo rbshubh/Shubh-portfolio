@@ -9,14 +9,12 @@
 html{scroll-behavior:smooth;}
 body{margin:0;font-family:Segoe UI;background:#0f0f0f;color:white;}
 
-/* NAVBAR */
 header{
 position:fixed;width:100%;top:0;
 display:flex;justify-content:space-between;
-padding:15px 40px;background:rgba(0,0,0,0.9);
+padding:15px 40px;background:#000;
 z-index:1000;
 }
-
 .logo{color:#00ffff;font-weight:bold;}
 nav a{color:#ccc;text-decoration:none;margin:0 15px;}
 nav a:hover{color:#00ffff;}
@@ -24,60 +22,103 @@ nav a:hover{color:#00ffff;}
 section{padding:100px 20px;text-align:center;}
 
 .hero{
-height:100vh;display:flex;
-flex-direction:column;justify-content:center;align-items:center;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#001f3f,#000814,#001d3d);
+}
+
+.profile{
+width:170px;height:170px;
+border-radius:50%;
+border:4px solid #00ffff;
+box-shadow:0 0 30px #00ffff;
+object-fit:cover;margin-bottom:20px;
 }
 
 .btn{
-padding:10px 25px;background:#00ffff;border:none;
-border-radius:20px;cursor:pointer;font-weight:bold;
+padding:8px 20px;
+background:#00ffff;
+border:none;
+border-radius:20px;
+cursor:pointer;
+margin-top:10px;
 }
 
-/* ABOUT */
-.about{background:#111;}
-.about p{max-width:700px;margin:auto;color:#bbb;line-height:1.8;}
+.about,.experience,.skills,.contact{background:#111;}
 
-/* SKILLS */
-.skills{background:#0f0f0f;}
-.skill-box{max-width:500px;margin:20px auto;text-align:left;}
-.progress{background:#222;border-radius:20px;overflow:hidden;}
-.progress-bar{height:10px;background:#00ffff;}
-
-/* PROJECTS */
-.projects{background:#111;}
 .project-card{
-display:inline-block;width:250px;margin:20px;
-padding:25px;background:#1a1a1a;border-radius:15px;
+display:inline-block;
+width:250px;
+margin:15px;
+padding:20px;
+background:#1a1a1a;
+border-radius:12px;
+transition:0.3s;
+}
+.project-card:hover{
+box-shadow:0 0 25px #00ffff;
+transform:translateY(-6px);
 }
 
-/* CONTACT */
-.contact{background:#0f0f0f;}
-.contact p{color:#bbb;}
-
-/* MODAL */
 .modal{
-display:none;position:fixed;top:0;left:0;
+display:none;
+position:fixed;
+top:0;left:0;
 width:100%;height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;align-items:center;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
 }
 
 .modal-content{
-background:#1a1a1a;padding:30px;border-radius:15px;
-width:340px;text-align:center;
+background:#1a1a1a;
+padding:25px;
+border-radius:12px;
+width:350px;
+max-height:80vh;
+overflow:auto;
+text-align:center;
 }
 
-input, select{
-width:90%;padding:8px;margin:6px;
-border:none;border-radius:5px;
+input,select{
+width:90%;
+padding:8px;
+margin:5px;
+border:none;
+border-radius:6px;
 }
 
-button{cursor:pointer;}
-.close{cursor:pointer;color:red;margin-top:10px;display:block;}
+.close{
+color:red;
+cursor:pointer;
+display:block;
+margin-top:10px;
+}
 
-.share-btn{background:#25D366;color:white;margin-top:8px;padding:8px;border:none;border-radius:6px;}
-.copy-btn{margin-top:8px;padding:8px;border:none;border-radius:6px;}
+.whatsapp-float{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+animation:pulse 2s infinite;
+}
+.whatsapp-float img{width:30px;}
 
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7);}
+70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+footer{background:black;padding:20px;text-align:center;color:#777;}
 </style>
 </head>
 
@@ -88,168 +129,299 @@ button{cursor:pointer;}
 <nav>
 <a href="#home">Home</a>
 <a href="#about">About</a>
+<a href="#experience">Experience</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
 
-<!-- HOME -->
 <section class="hero" id="home">
-<h1>Hi I'm Shubham</h1>
-<p>Growth Focused Professional & Web Development Learner</p>
-<button class="btn" onclick="location.href='#projects'">View Projects</button>
+<img src="profile.jpg" class="profile">
+<h1>Hi, I'm Shubham</h1>
+<a href="resume.pdf" download class="btn">Download Resume</a>
+<button class="btn" onclick="document.getElementById('projects').scrollIntoView()">View Projects</button>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-<h2>About Me</h2>
+<section id="about" style="background:#111;">
+<h2 style="color:#00ffff;">About Me</h2>
+
+<div style="max-width:800px;margin:auto;text-align:left;line-height:1.8;font-size:16px;color:#ccc;">
+
 <p>
-I am currently working in Partner Growth Marketing with experience in operations,
-customer handling and technical data management.
-Alongside my job, I am learning Web Development to transition into
-a technology-driven career.
+I am a growth-driven professional currently working in <b style="color:#00ffff;">Partner Growth Marketing</b>, 
+with strong hands-on experience in operations management, customer resolution, 
+data handling and performance monitoring.
 </p>
-</section>
 
-<!-- SKILLS -->
-<section class="skills" id="skills">
-<h2>My Skills</h2>
+<p>
+Over the years, I have worked with organizations like 
+<b style="color:#00ffff;">ZET</b>, 
+<b style="color:#00ffff;">Larsen & Toubro</b>, and 
+<b style="color:#00ffff;">Shadowfax Logistics</b>, 
+where I handled real-time operational challenges, smart meter data systems, 
+customer escalations, and delivery coordination.
+</p>
+
+<p>
+Alongside my corporate career, I am actively transitioning into 
+<b style="color:#00ffff;">Web Development</b>. 
+I am building interactive web applications, improving my frontend skills, 
+and continuously working on live projects to strengthen my technical foundation.
+</p>
+
+<p>
+I strongly believe in <b style="color:#00ffff;">discipline, consistency, and continuous self-improvement</b>. 
+My goal is to combine business understanding with technical expertise 
+to build scalable and impactful digital solutions.
+</p>
+
+</div>
+<section id="experience" class="experience">
+<h2 style="color:#00ffff;">Professional Experience</h2>
+
+<div class="exp-container">
+
+<div class="exp-card">
+<h3>ZET – Partner Growth Marketing</h3>
+<p>
+• Partner growth strategy execution<br>
+• Performance tracking & reporting<br>
+• Business coordination & operations<br>
+• Revenue optimization initiatives
+</p>
+</div>
+
+<div class="exp-card">
+<h3>Larsen & Toubro – Smart Meter Operations</h3>
+<p>
+• Smart meter data management<br>
+• Field issue coordination<br>
+• Technical reporting<br>
+• Data accuracy validation
+</p>
+</div>
+
+<div class="exp-card">
+<h3>Shadowfax Logistics – Operations Executive</h3>
+<p>
+• Customer issue resolution<br>
+• Pickup & delivery coordination<br>
+• Social media escalation handling<br>
+• Operational workflow management
+</p>
+</div>
+
+</div>
+</section>
+<section id="skills" class="skills">
+<h2 style="color:#00ffff;">Skills</h2>
 
 <div class="skill-box">
-HTML
-<div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+<p>HTML</p>
+<div class="progress">
+<div class="progress-bar" style="width:85%"></div>
+</div>
 </div>
 
 <div class="skill-box">
-CSS
-<div class="progress"><div class="progress-bar" style="width:75%"></div></div>
+<p>CSS</p>
+<div class="progress">
+<div class="progress-bar" style="width:80%"></div>
+</div>
 </div>
 
 <div class="skill-box">
-Excel & Data
-<div class="progress"><div class="progress-bar" style="width:90%"></div></div>
+<p>JavaScript</p>
+<div class="progress">
+<div class="progress-bar" style="width:70%"></div>
 </div>
+</div>
+
+<div class="skill-box">
+<p>Excel & Data Handling</p>
+<div class="progress">
+<div class="progress-bar" style="width:90%"></div>
+</div>
+</div>
+
+<div class="skill-box">
+<p>Marketing Analytics</p>
+<div class="progress">
+<div class="progress-bar" style="width:75%"></div>
+</div>
+</div>
+
+<div class="skill-box">
+<p>Operations Management</p>
+<div class="progress">
+<div class="progress-bar" style="width:85%"></div>
+</div>
+</div>
+
+</section><section id="projects">
+<h2 style="color:#00ffff;">Projects</h2>
+
+<div class="project-card"><h3>EMI Calculator</h3><button class="btn" onclick="openModal('emiModal')">Open</button></div>
+<div class="project-card"><h3>Expense Tracker</h3><button class="btn" onclick="openModal('expenseModal');loadExpenses()">Open</button></div>
+<div class="project-card"><h3>Age Calculator</h3><button class="btn" onclick="openModal('ageModal')">Open</button></div>
+<div class="project-card"><h3>Password Generator</h3><button class="btn" onclick="openModal('passModal')">Open</button></div>
+<div class="project-card"><h3>Quote Generator</h3><button class="btn" onclick="openModal('quoteModal')">Open</button></div>
+<div class="project-card"><h3>To-Do App</h3><button class="btn" onclick="openModal('todoModal')">Open</button></div>
 
 </section>
 
-<!-- PROJECTS -->
-<section class="projects" id="projects">
-<h2>My Projects</h2>
-
-<div class="project-card">
-<h3>🧮 EMI Calculator</h3>
-<button onclick="openEMI()">Open</button>
-</div>
-
-<div class="project-card">
-<h3>💰 Expense Tracker</h3>
-<button onclick="openExpense()">Explore</button>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-<h2>Contact Me</h2>
+<section id="contact" class="contact">
+<h2 style="color:#00ffff;">Contact</h2>
 <p>📞 9793317379</p>
 <p>📧 rbshubh41@gmail.com</p>
 </section>
 
-<!-- EMI MODAL -->
+<footer>© 2026 Shubham Bhiwapurkar</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/919793317379" target="_blank" class="whatsapp-float">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
+
+<!-- MODALS -->
+
 <div class="modal" id="emiModal">
 <div class="modal-content">
 <h3>EMI Calculator</h3>
 <input type="number" id="loan" placeholder="Loan Amount">
-<input type="number" id="rate" placeholder="Interest Rate (%)">
+<input type="number" id="rate" placeholder="Interest Rate">
 <input type="number" id="months" placeholder="Months">
 <button onclick="calculateEMI()">Calculate</button>
 <p id="emiResult"></p>
-<span class="close" onclick="closeModal()">Close</span>
+<span class="close" onclick="closeAll()">Close</span>
 </div>
 </div>
 
-<!-- EXPENSE MODAL -->
 <div class="modal" id="expenseModal">
 <div class="modal-content">
 <h3>Expense Tracker</h3>
-
-<select id="expenseSelect">
-<option value="">Select Category</option>
-<option value="Train">Train</option>
-<option value="Bus">Bus</option>
-<option value="Hotel">Hotel</option>
-<option value="Food">Food</option>
-<option value="Shopping">Shopping</option>
-<option value="Petrol">Petrol</option>
-<option value="Other">Other</option>
+<select id="category">
+<option value="">Category</option>
+<option>Food</option>
+<option>Travel</option>
+<option>Shopping</option>
+<option>Petrol</option>
 </select>
-
-<input type="text" id="expenseName" placeholder="Or Type Custom Name">
-<input type="number" id="expenseAmount" placeholder="Amount">
-
+<input type="text" id="customName" placeholder="Custom Name">
+<input type="number" id="amount" placeholder="Amount">
 <button onclick="addExpense()">Add</button>
-
 <div id="expenseList"></div>
-<p id="totalExpense"></p>
+<h4 id="totalDisplay"></h4>
+<button onclick="shareExpenses()" class="btn">Share</button>
+<span class="close" onclick="closeAll()">Close</span>
+</div>
+</div>
 
-<button class="share-btn" onclick="shareExpense()">Share on WhatsApp</button>
-<button class="copy-btn" onclick="copyExpense()">Copy Report</button>
+<div class="modal" id="ageModal">
+<div class="modal-content">
+<h3>Age Calculator</h3>
+<input type="date" id="dob">
+<button onclick="calculateAge()">Calculate</button>
+<p id="ageResult"></p>
+<span class="close" onclick="closeAll()">Close</span>
+</div>
+</div>
 
-<span class="close" onclick="closeModal()">Close</span>
+<div class="modal" id="passModal">
+<div class="modal-content">
+<h3>Password Generator</h3>
+<button onclick="generatePassword()">Generate</button>
+<p id="passResult"></p>
+<span class="close" onclick="closeAll()">Close</span>
+</div>
+</div>
+
+<div class="modal" id="quoteModal">
+<div class="modal-content">
+<h3>Quote Generator</h3>
+<button onclick="generateQuote()">Generate</button>
+<p id="quoteResult"></p>
+<span class="close" onclick="closeAll()">Close</span>
+</div>
+</div>
+
+<div class="modal" id="todoModal">
+<div class="modal-content">
+<h3>To-Do App</h3>
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+<ul id="taskList"></ul>
+<span class="close" onclick="closeAll()">Close</span>
 </div>
 </div>
 
 <script>
-function openEMI(){document.getElementById("emiModal").style.display="flex";}
-function openExpense(){document.getElementById("expenseModal").style.display="flex";}
-function closeModal(){
-document.getElementById("emiModal").style.display="none";
-document.getElementById("expenseModal").style.display="none";
-}
+function openModal(id){document.getElementById(id).style.display="flex";}
+function closeAll(){document.querySelectorAll('.modal').forEach(m=>m.style.display='none');}
 
 /* EMI */
 function calculateEMI(){
-let P=document.getElementById("loan").value;
-let R=document.getElementById("rate").value/12/100;
-let N=document.getElementById("months").value;
-if(P && R && N){
+let P=loan.value,R=rate.value/12/100,N=months.value;
 let emi=(P*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);
-document.getElementById("emiResult").innerText="Monthly EMI: ₹"+emi.toFixed(2);
-}
+emiResult.innerText="Monthly EMI: ₹"+emi.toFixed(2);
 }
 
 /* Expense */
-let total=0;
+let expenses=JSON.parse(localStorage.getItem("expenses"))||[];
 function addExpense(){
-let selected=document.getElementById("expenseSelect").value;
-let custom=document.getElementById("expenseName").value;
-let amount=parseFloat(document.getElementById("expenseAmount").value);
-let finalName=custom?custom:selected;
-
-if(finalName && amount){
-total+=amount;
-document.getElementById("expenseList").innerHTML+=finalName+" - ₹"+amount+"<br>";
-document.getElementById("totalExpense").innerText="Total: ₹"+total;
-document.getElementById("expenseSelect").value="";
-document.getElementById("expenseName").value="";
-document.getElementById("expenseAmount").value="";
+let name=customName.value||category.value;
+let amt=parseFloat(amount.value);
+if(name && amt){
+expenses.push({name,amt});
+localStorage.setItem("expenses",JSON.stringify(expenses));
+loadExpenses();
+customName.value="";amount.value="";category.value="";
+}}
+function loadExpenses(){
+expenseList.innerHTML="";let total=0;
+expenses.forEach((e,i)=>{
+total+=e.amt;
+expenseList.innerHTML+=e.name+" - ₹"+e.amt+
+" <button onclick='deleteExpense("+i+")'>X</button><br>";
+});
+totalDisplay.innerText="Total: ₹"+total;
 }
+function deleteExpense(i){
+expenses.splice(i,1);
+localStorage.setItem("expenses",JSON.stringify(expenses));
+loadExpenses();
+}
+function shareExpenses(){
+let text="Expense Report:%0A";
+expenses.forEach(e=>{text+=e.name+" - ₹"+e.amt+"%0A";});
+window.open("https://wa.me/?text="+text,"_blank");
 }
 
-function shareExpense(){
-let text=document.getElementById("expenseList").innerText;
-let totalText=document.getElementById("totalExpense").innerText;
-let message="Expense Report:\n\n"+text+"\n"+totalText;
-window.open("https://wa.me/?text="+encodeURIComponent(message),"_blank");
+/* Age */
+function calculateAge(){
+let dob=new Date(document.getElementById("dob").value);
+let age=new Date(Date.now()-dob.getTime()).getUTCFullYear()-1970;
+ageResult.innerText="Age: "+age;
 }
 
-function copyExpense(){
-let text=document.getElementById("expenseList").innerText;
-let totalText=document.getElementById("totalExpense").innerText;
-let message="Expense Report:\n\n"+text+"\n"+totalText;
-navigator.clipboard.writeText(message);
-alert("Expense copied!");
+/* Password */
+function generatePassword(){
+passResult.innerText=Math.random().toString(36).slice(-10);
+}
+
+/* Quote */
+function generateQuote(){
+let quotes=["Stay Focused","Keep Growing","Never Quit","Discipline Wins"];
+quoteResult.innerText=quotes[Math.floor(Math.random()*quotes.length)];
+}
+
+/* Todo */
+function addTask(){
+let li=document.createElement("li");
+li.textContent=taskInput.value;
+taskList.appendChild(li);
+taskInput.value="";
 }
 </script>
 
